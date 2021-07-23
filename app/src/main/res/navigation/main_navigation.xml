@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/pinActivity">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.cektrend.cekinhome.DashboardFragment"
+        android:label="DashboardFragment"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_dashboardFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.cektrend.cekinhome.SettingsFragment"
+        android:label="SettingFragment" />
+
+    <activity
+        android:id="@+id/pinActivity"
+        android:name="com.cektrend.cekinhome.PinActivity"
+        android:label="SplashFragment"
+        tools:layout="@layout/activity_pin">
+        <action
+            android:id="@+id/action_pinActivity_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </activity>
+</navigation>
