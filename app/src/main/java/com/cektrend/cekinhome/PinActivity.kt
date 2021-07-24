@@ -6,6 +6,7 @@ import android.text.Editable
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.activity_pin.*
 
 
