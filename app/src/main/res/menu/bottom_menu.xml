@@ -5,17 +5,17 @@
         android:id="@+id/action_home"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="Page1"
-        app:showAsAction="ifRoom"/>
+        android:title="Home"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_feed"
         android:enabled="true"
-        android:title="Page2"
-        app:showAsAction="ifRoom"/>
+        android:title=""
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_settings"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_settings_24"
-        android:title="Page3"
-        app:showAsAction="ifRoom"/>
+        android:title="Settings"
+        app:showAsAction="ifRoom" />
 </menu>

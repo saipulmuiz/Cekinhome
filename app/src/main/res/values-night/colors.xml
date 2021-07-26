@@ -8,8 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="gray">#D8D8D8</color>
     <color name="dark_gray">#515151</color>
-    <color name="card_view_default">#FFFFFF</color>
-    <color name="card_view_text_default">#515151</color>
+    <color name="card_view_default">#ff424242</color>
+    <color name="card_view_text_default">#FFFFFF</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue_primary">#2397E6</color>
     <color name="blue_primary_dark">#001E6C</color>

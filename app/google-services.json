@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1040649091522",
+    "firebase_url": "https://iot-homeproject-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "iot-homeproject",
+    "storage_bucket": "iot-homeproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040649091522:android:288061df4a9e19b4cf3e5b",
+        "android_client_info": {
+          "package_name": "com.cektrend.cekinhome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1040649091522-2n7h3omr66meprjvni9f72ugadu78n2l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cektrend.cekinhome",
+            "certificate_hash": "26b5f1ded862654c09fa2f144e8e9b600ef8bdde"
+          }
+        },
+        {
+          "client_id": "1040649091522-q8f44cu1v43h9pvm6fc1d9ddil6geef9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAt525Mj5ihKeC9uLkxGG1NvBLjeyW-KT4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1040649091522-q8f44cu1v43h9pvm6fc1d9ddil6geef9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
