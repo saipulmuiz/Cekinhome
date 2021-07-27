@@ -27,6 +27,7 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setDarkModeSwitch()
+        binding.tvAppVersion.text = BuildConfig.VERSION_NAME
     }
 
     private fun setDarkModeSwitch() {
@@ -34,8 +35,9 @@ class SettingsFragment : Fragment() {
         binding.darkModeSwitch.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
             val darkModePrefManager = DarkModePrefManager(requireContext())
             darkModePrefManager.setDarkMode(!darkModePrefManager.isNightMode)
+            activity?.showToast("Silahkan mulai ulang!")
             // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            // recreate(requireActivity())
+            // recreate()
         })
     }
 }

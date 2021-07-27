@@ -13,7 +13,7 @@ import com.google.android.material.tabs.TabLayout
 import com.cektrend.cekinhome.utils.showToast
 import java.util.*
 
-class DashboardFragment : Fragment(), TabLayout.OnTabSelectedListener {
+class DashboardFragment : Fragment() {
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
 
@@ -24,7 +24,6 @@ class DashboardFragment : Fragment(), TabLayout.OnTabSelectedListener {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         setupViewPager(binding.tabRoomViewpager)
         binding.tabRoom.setupWithViewPager(binding.tabRoomViewpager)
-        binding.tabRoom.addOnTabSelectedListener(this)
         val view = binding.root
         return view
     }
@@ -56,16 +55,4 @@ class DashboardFragment : Fragment(), TabLayout.OnTabSelectedListener {
             return mFragmentTitleList[position]
         }
     }
-
-    override fun onTabSelected(tab: TabLayout.Tab?) {
-        binding.tabRoomViewpager.setCurrentItem(tab!!.position)
-
-        when (tab.position) {
-            0 -> context?.showToast("One")
-            1 -> context?.showToast("Two")
-        }
-    }
-
-    override fun onTabUnselected(tab: TabLayout.Tab?) {}
-    override fun onTabReselected(tab: TabLayout.Tab?) {}
 }

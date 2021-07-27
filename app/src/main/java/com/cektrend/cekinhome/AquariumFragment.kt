@@ -84,7 +84,7 @@ class AquariumFragment : Fragment(), View.OnClickListener, FABProgressListener, 
                 if (state) {
                     dbCekinhome.child("device").child("aquarium").child("lamp").setValue(1)
                         .addOnSuccessListener {
-                            binding.cvLamp.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue_primary_dark))
+                            binding.cvLamp.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.card_view_active))
                             binding.tvIndicatorLamp.text = getString(R.string.state_on)
                             binding.tvIndicatorLamp.setTextColor(Color.WHITE)
                             binding.tvLamp.setTextColor(Color.WHITE)
@@ -109,7 +109,7 @@ class AquariumFragment : Fragment(), View.OnClickListener, FABProgressListener, 
                 if (state) {
                     dbCekinhome.child("device").child("aquarium").child("pump").setValue(1)
                         .addOnSuccessListener {
-                            binding.cvPump.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blue_primary_dark))
+                            binding.cvPump.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.card_view_active))
                             binding.tvIndicatorPump.text = getString(R.string.state_on)
                             binding.tvIndicatorPump.setTextColor(Color.WHITE)
                             binding.tvPump.setTextColor(Color.WHITE)

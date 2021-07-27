@@ -14,7 +14,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
-        versionName "1.0"
+        versionName "App ver 1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -47,6 +47,9 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'com.github.jorgecastilloprz:fabprogresscircle:1.01@aar'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    // Biometric Authentication
+    implementation 'androidx.biometric:biometric:1.2.0-alpha03'
 
     // Android Navigation Architecture
     def navigationVersion = '2.3.1'

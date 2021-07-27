@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:background="@color/blue_primary"
+    tools:background="@color/activity_bg"
     tools:context=".SettingsFragment">
 
     <LinearLayout
@@ -40,7 +40,6 @@
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             style="@style/settingsText"
-            android:checked="true"
             android:drawableStart="@drawable/ic_notifications"
             android:text="Notifications" />
 
@@ -60,8 +59,9 @@
 
 
         <TextView
+            android:id="@+id/tv_app_version"
             style="@style/viewParent.headerText.settingsMiniTitle"
-            android:text="App ver 2.0.1"
+            tools:text="App ver 1.0"
             android:textAlignment="center" />
 
     </LinearLayout>
