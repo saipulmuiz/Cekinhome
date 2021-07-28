@@ -32,6 +32,7 @@ class PinActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityPinBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        binding.pinActivity.setBackgroundColor(ContextCompat.getColor(this, R.color.activity_bg))
         initiViews()
         initBiometric()
     }

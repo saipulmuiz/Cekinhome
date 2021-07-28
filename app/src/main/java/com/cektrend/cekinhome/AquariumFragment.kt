@@ -13,6 +13,7 @@ import com.cektrend.cekinhome.data.Device
 import com.cektrend.cekinhome.databinding.FragmentAquariumBinding
 import com.cektrend.cekinhome.utils.showToast
 import com.github.jorgecastilloprz.listeners.FABProgressListener
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.*
 
@@ -137,8 +138,11 @@ class AquariumFragment : Fragment(), View.OnClickListener, FABProgressListener, 
         dbCekinhome.child("device").child("aquarium").child("feed").setValue(1)
             .addOnSuccessListener {
                 binding.fabFeed.isEnabled = true
-                Snackbar.make(binding.fabProgressCircle, "Ikan sudah diberi pakan... :)", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null)
+                val bottomNavView: BottomNavigationView = activity?.findViewById(R.id.customBottomBar)!!
+                Snackbar.make(bottomNavView, "Ikan sudah diberi pakan... :)", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).apply {
+                        anchorView = bottomNavView
+                    }
                     .show()
             }
             .addOnFailureListener {

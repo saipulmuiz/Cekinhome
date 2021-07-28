@@ -1,10 +1,14 @@
 package com.cektrend.cekinhome
 
+import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -25,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        binding.mainActivity.setBackgroundColor(ContextCompat.getColor(this, R.color.activity_bg))
         binding.customBottomBar.inflateMenu(R.menu.bottom_menu)
         setUpNavigation()
         binding.fabInfo.setOnClickListener { this.showToast("fab button di click!") }
@@ -92,5 +97,42 @@ class MainActivity : AppCompatActivity() {
             this@MainActivity.showToast("Tekan sekali lagi untuk keluar..")
             Handler(Looper.getMainLooper()).postDelayed({ doubleBack = false }, 2000)
         }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+
+        if (nightModeFlags == Configuration.UI_MODE_NIGHT_NO) {
+            applyDayNight(OnDayNightStateChanged.DAY)
+        } else {
+            applyDayNight(OnDayNightStateChanged.NIGHT)
+        }
+    }
+
+    private fun applyDayNight(state: Int) {
+        if (state == OnDayNightStateChanged.DAY) {
+            window.statusBarColor = ContextCompat.getColor(this, R.color.blue_primary_dark)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            binding.mainActivity.setBackgroundColor(ContextCompat.getColor(this, R.color.activity_bg))
+            binding.bottomAppBar.backgroundTint = ContextCompat.getColorStateList(this, R.color.white)
+            binding.customBottomBar.itemIconTintList = ContextCompat.getColorStateList(this, R.color.dark_gray)
+            binding.customBottomBar.itemTextColor = ContextCompat.getColorStateList(this, R.color.dark_gray)
+        } else {
+            window.statusBarColor = ContextCompat.getColor(this, R.color.dark_gray)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            binding.mainActivity.setBackgroundColor(ContextCompat.getColor(this, R.color.activity_bg))
+            binding.bottomAppBar.backgroundTint = ContextCompat.getColorStateList(this, R.color.dark_gray)
+            binding.customBottomBar.itemIconTintList = ContextCompat.getColorStateList(this, R.color.white)
+            binding.customBottomBar.itemTextColor = ContextCompat.getColorStateList(this, R.color.white)
+        }
+
+        // supportFragmentManager.fragments.forEach {
+        //     if(it is OnDayNightStateChanged){
+        //         it.onDayNightApplied(state)
+        //     }
+        // }
+        // recreate()
+
     }
 }

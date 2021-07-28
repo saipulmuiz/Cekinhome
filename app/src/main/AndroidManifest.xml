@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cekinhome">
         <activity
-            android:name=".PinActivity"
+            android:name=".SplashActivity"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,9 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".PinActivity"
+            android:noHistory="true">
 
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="uiMode"></activity>
     </application>
 
 </manifest>

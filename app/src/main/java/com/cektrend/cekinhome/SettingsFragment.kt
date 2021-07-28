@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat.recreate
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.cektrend.cekinhome.databinding.FragmentSettingsBinding
 import com.cektrend.cekinhome.utils.showToast
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : Fragment(), OnDayNightStateChanged {
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
 
@@ -31,13 +32,25 @@ class SettingsFragment : Fragment() {
     }
 
     private fun setDarkModeSwitch() {
+        val darkModePrefManager = DarkModePrefManager(requireContext())
         binding.darkModeSwitch.isChecked = DarkModePrefManager(requireContext()).isNightMode
-        binding.darkModeSwitch.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
-            val darkModePrefManager = DarkModePrefManager(requireContext())
-            darkModePrefManager.setDarkMode(!darkModePrefManager.isNightMode)
-            activity?.showToast("Silahkan mulai ulang!")
+        binding.darkModeSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                darkModePrefManager.setDarkMode(true)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                darkModePrefManager.setDarkMode(false)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+            }
+            // val darkModePrefManager = DarkModePrefManager(requireContext())
+            // darkModePrefManager.setDarkMode(!darkModePrefManager.isNightMode)
+            // activity?.showToast("Silahkan mulai ulang!")
             // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             // recreate()
-        })
+        }
+    }
+
+    override fun onDayNightApplied(state: Int) {
+        binding.darkModeSwitch.isChecked = state != OnDayNightStateChanged.DAY
     }
 }
