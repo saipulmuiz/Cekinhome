@@ -1,4 +1,4 @@
-package com.cektrend.cekinhome
+package com.cektrend.cekinhome.features.history
 
 import android.content.Context
 /**
@@ -20,7 +20,7 @@ class HistoryTable(context: Context) {
     var headerKondisi : String? = null
     var headerDate : String? = null
 
-    fun addHeader(headerNo : String, headerDeviceName: String, headerKondisi: String, headerDate : String) : HistoryTable{
+    fun addHeader(headerNo : String, headerDeviceName: String, headerKondisi: String, headerDate : String) : HistoryTable {
         val data = HistoryTable(mContext)
         data.headerNo = headerNo
         data.headerDeviceName = headerDeviceName
@@ -29,7 +29,7 @@ class HistoryTable(context: Context) {
         return data
     }
 
-    fun addData(no : Int, deviceName: String, kondisi: String, date : String) : HistoryTable{
+    fun addData(no : Int, deviceName: String, kondisi: String, date : String) : HistoryTable {
         val data = HistoryTable(mContext)
         data.no = no
         data.deviceName = deviceName

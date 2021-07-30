@@ -1,11 +1,16 @@
-package com.cektrend.cekinhome.data
+package com.cektrend.cekinhome.core.util
 /**
  * Created by Saipul Muiz on 7/30/2021.
  * Cekinhome | Made with love
  * Check our website -> Cektrend Studio | https://cektrend.com for more information
  * For question and project collaboration contact me to saipulmuiz87@gmail.com
  */
-data class Device(
-    val aquarium: Aquarium? = null,
-    val kitchen: Kitchen? = null
-)
+interface OnDayNightStateChanged {
+
+    fun onDayNightApplied(state: Int)
+
+    companion object{
+        const val DAY = 1
+        const val NIGHT = 2
+    }
+}

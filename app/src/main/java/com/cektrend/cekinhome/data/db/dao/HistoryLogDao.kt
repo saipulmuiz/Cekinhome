@@ -2,6 +2,8 @@ package com.cektrend.cekinhome.data.db.dao
 
 import androidx.room.*
 import com.cektrend.cekinhome.data.db.entity.HistoryLog
+import io.reactivex.Flowable
+
 /**
  * Created by Saipul Muiz on 7/30/2021.
  * Cekinhome | Made with love
@@ -11,8 +13,8 @@ import com.cektrend.cekinhome.data.db.entity.HistoryLog
 @Dao
 interface HistoryLogDao {
     @Query("SELECT * FROM history_log_table")
-    fun fetchAllHistoryLog(): List<HistoryLog>
+    fun getAll(): Flowable<List<HistoryLog>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addHistoryLog(historyLog: HistoryLog)
+    fun insert(historyLog: HistoryLog)
 }

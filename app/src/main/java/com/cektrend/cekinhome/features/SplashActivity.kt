@@ -1,16 +1,17 @@
-package com.cektrend.cekinhome
+package com.cektrend.cekinhome.features
 
-import com.cektrend.cekinhome.R
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.ContextCompat
+import com.cektrend.cekinhome.BuildConfig
+import com.cektrend.cekinhome.R
 import com.cektrend.cekinhome.databinding.ActivitySplashBinding
+import com.cektrend.cekinhome.features.pin.PinActivity
+import com.cektrend.cekinhome.features.settings.SettingsPrefManager
 
 /**
  * Created by Saipul Muiz on 7/30/2021.

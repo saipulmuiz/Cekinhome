@@ -1,4 +1,4 @@
-package com.cektrend.cekinhome
+package com.cektrend.cekinhome.features.aquarium
 
 import android.graphics.Color
 import android.os.Bundle
@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.cektrend.cekinhome.data.Aquarium
-import com.cektrend.cekinhome.data.Device
+import com.cektrend.cekinhome.R
+import com.cektrend.cekinhome.core.base.BaseFragment
+import com.cektrend.cekinhome.data.entity.Aquarium
+import com.cektrend.cekinhome.data.entity.Device
 import com.cektrend.cekinhome.data.db.AppDatabase
 import com.cektrend.cekinhome.data.db.entity.HistoryLog
 import com.cektrend.cekinhome.databinding.FragmentAquariumBinding
@@ -29,7 +31,7 @@ import java.util.*
  * Check our website -> Cektrend Studio | https://cektrend.com for more information
  * For question and project collaboration contact me to saipulmuiz87@gmail.com
  */
-class AquariumFragment : Fragment(), View.OnClickListener, FABProgressListener, CompoundButton.OnCheckedChangeListener {
+class AquariumFragment : BaseFragment(FragmentAquariumBinding, AquariumViewModel), View.OnClickListener, FABProgressListener, CompoundButton.OnCheckedChangeListener {
     private lateinit var dbCekinhome: DatabaseReference
     private var _binding: FragmentAquariumBinding? = null
     private val binding get() = _binding!!
@@ -37,6 +39,7 @@ class AquariumFragment : Fragment(), View.OnClickListener, FABProgressListener, 
     private var appDatabase: AppDatabase? = null
     private val compositeDisposable = CompositeDisposable()
     private var afterLaunch: Boolean = false
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -98,7 +101,7 @@ class AquariumFragment : Fragment(), View.OnClickListener, FABProgressListener, 
                 if (state) {
                     dbCekinhome.child("device").child("aquarium").child("lamp").setValue(1)
                         .addOnSuccessListener {
-                            addHistoryLog(HistoryLog("Lampu Aquarium", "Hidup", Date().time))
+                            // addHistoryLog(HistoryLog("Lampu Aquarium", "Hidup", Date().time))
                             binding.cvLamp.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.card_view_active))
                             binding.tvIndicatorLamp.text = getString(R.string.state_on)
                             binding.tvIndicatorLamp.setTextColor(Color.WHITE)
@@ -110,7 +113,7 @@ class AquariumFragment : Fragment(), View.OnClickListener, FABProgressListener, 
                 } else {
                     dbCekinhome.child("device").child("aquarium").child("lamp").setValue(0)
                         .addOnSuccessListener {
-                            addHistoryLog(HistoryLog("Lampu Aquarium", "Mati", Date().time))
+                            // addHistoryLog(HistoryLog("Lampu Aquarium", "Mati", Date().time))
                             binding.cvLamp.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.card_view_default))
                             binding.tvIndicatorLamp.text = getString(R.string.state_off)
                             binding.tvIndicatorLamp.setTextColor(ContextCompat.getColor(requireContext(), R.color.card_view_text_default))
@@ -125,7 +128,7 @@ class AquariumFragment : Fragment(), View.OnClickListener, FABProgressListener, 
                 if (state) {
                     dbCekinhome.child("device").child("aquarium").child("pump").setValue(1)
                         .addOnSuccessListener {
-                            addHistoryLog(HistoryLog("Pompa Aquarium", "Hidup", Date().time))
+                            // addHistoryLog(HistoryLog("Pompa Aquarium", "Hidup", Date().time))
                             binding.cvPump.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.card_view_active))
                             binding.tvIndicatorPump.text = getString(R.string.state_on)
                             binding.tvIndicatorPump.setTextColor(Color.WHITE)
@@ -138,7 +141,7 @@ class AquariumFragment : Fragment(), View.OnClickListener, FABProgressListener, 
                 } else {
                     dbCekinhome.child("device").child("aquarium").child("pump").setValue(0)
                         .addOnSuccessListener {
-                            addHistoryLog(HistoryLog("Pompa Aquarium", "Mati", Date().time))
+                            // addHistoryLog(HistoryLog("Pompa Aquarium", "Mati", Date().time))
                             binding.cvPump.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.card_view_default))
                             binding.tvIndicatorPump.text = getString(R.string.state_off)
                             binding.tvIndicatorPump.setTextColor(ContextCompat.getColor(requireContext(), R.color.card_view_text_default))
@@ -152,20 +155,20 @@ class AquariumFragment : Fragment(), View.OnClickListener, FABProgressListener, 
         }
     }
 
-    private fun addHistoryLog(historyLog: HistoryLog) {
-        if (afterLaunch) {
-            compositeDisposable.add(Observable.fromCallable { appDatabase?.historyLogDao()?.addHistoryLog(historyLog) }
-                .subscribeOn(Schedulers.computation())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe())
-        }
-    }
+    // private fun addHistoryLog(historyLog: HistoryLog) {
+    //     if (afterLaunch) {
+    //         compositeDisposable.add(Observable.fromCallable { appDatabase?.historyLogDao()?.addHistoryLog(historyLog) }
+    //             .subscribeOn(Schedulers.computation())
+    //             .observeOn(AndroidSchedulers.mainThread())
+    //             .subscribe())
+    //     }
+    // }
 
     override fun onFABProgressAnimationEnd() {
         dbCekinhome.child("device").child("aquarium").child("feed").setValue(1)
             .addOnSuccessListener {
                 binding.fabFeed.isEnabled = true
-                addHistoryLog(HistoryLog("Pakan Aquarium", "Sukses", Date().time))
+                // addHistoryLog(HistoryLog("Pakan Aquarium", "Sukses", Date().time))
                 val bottomNavView: BottomNavigationView = activity?.findViewById(R.id.customBottomBar)!!
                 Snackbar.make(bottomNavView, "Ikan sudah diberi pakan... :)", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).apply {

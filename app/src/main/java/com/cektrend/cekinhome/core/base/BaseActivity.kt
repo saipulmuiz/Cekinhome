@@ -3,6 +3,8 @@ package com.cektrend.cekinhome.core.base
 import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import java.lang.reflect.ParameterizedType
 
@@ -12,22 +14,40 @@ import java.lang.reflect.ParameterizedType
  * Check our website -> Cektrend Studio | https://cektrend.com for more information
  * For question and project collaboration contact me to saipulmuiz87@gmail.com
  */
-abstract class BaseActivity<V : ViewModel> : AppCompatActivity() {
+abstract class BaseActivity<T : ViewDataBinding, V : ViewModel> : AppCompatActivity(){
 
     val NO_VIEW_MODEL_BINDING_VARIABLE = -1
 
     private lateinit var mViewModel: V
+    private lateinit var mViewDataBinding: T
 
-    abstract fun getViewModelBindingVariable(): Int
+    abstract fun getViewModelBindingVariable() : Int
 
     @LayoutRes
-    abstract fun getLayoutId(): Int
+    abstract fun getLayoutId() : Int
 
-    fun getViewModel(): V = mViewModel
+    fun getViewModel() : V = mViewModel
+
+    fun getDataBinding() : T = mViewDataBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        performDataBinding()
 //        provideViewModel()
+
+    }
+
+    private fun performDataBinding() {
+        mViewDataBinding = DataBindingUtil.setContentView(this, getLayoutId())
+        if (getViewModelBindingVariable() != NO_VIEW_MODEL_BINDING_VARIABLE) {
+            setViewModelBindingVariable()
+        }
+    }
+
+    private fun setViewModelBindingVariable() {
+        mViewDataBinding.setVariable(getViewModelBindingVariable(), mViewModel)
+        mViewDataBinding.executePendingBindings()
     }
 
     private fun provideViewModel() {
@@ -43,5 +63,4 @@ abstract class BaseActivity<V : ViewModel> : AppCompatActivity() {
             getViewModelClass(aClass.superclass as Class<*>)
         }
     }
-
 }

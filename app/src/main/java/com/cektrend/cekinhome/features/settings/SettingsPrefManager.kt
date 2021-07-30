@@ -1,4 +1,4 @@
-package com.cektrend.cekinhome
+package com.cektrend.cekinhome.features.settings
 
 import android.content.Context
 import android.content.SharedPreferences

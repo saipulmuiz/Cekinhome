@@ -1,12 +1,11 @@
-package com.cektrend.cekinhome
+package com.cektrend.cekinhome.features.bedroom
 
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.cektrend.cekinhome.data.Device
+import com.cektrend.cekinhome.data.entity.Device
 import com.cektrend.cekinhome.databinding.FragmentBedroomBinding
 import com.google.firebase.database.*
 /**

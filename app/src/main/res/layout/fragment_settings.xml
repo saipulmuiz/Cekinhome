@@ -1,74 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:background="@color/activity_bg"
-    tools:context=".SettingsFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="30dp">
+        android:layout_height="match_parent"
+        tools:background="@color/activity_bg"
+        tools:context=".features.settings.SettingsFragment">
 
-        <TextView
-            style="@style/viewParent.headerText"
-            android:text="Settings" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30dp">
 
-
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/darkModeSwitch"
-            style="@style/settingsText"
-            android:drawableStart="@drawable/ic_dark_mode"
-            android:text="Dark Mode" />
-
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/biometric_switch"
-            style="@style/settingsText"
-            android:drawableStart="@drawable/ic_baseline_fingerprint_24"
-            android:text="Biometric Sensor Default" />
-
-        <TextView
-            style="@style/viewParent.headerText.settingsMiniTitle"
-            android:text="Profile" />
-
-        <TextView
-            style="@style/viewParent.headerText.settingsTextIcon"
-            android:layout_marginTop="10dp"
-            android:drawableStart="@drawable/ic_edit_password"
-            android:text="Change Pin" />
-
-        <TextView
-            style="@style/viewParent.headerText.settingsMiniTitle"
-            android:text="Notifications" />
-
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            style="@style/settingsText"
-            android:drawableStart="@drawable/ic_notifications"
-            android:text="Notifications" />
-
-        <TextView
-            style="@style/viewParent.headerText.settingsMiniTitle"
-            android:text="Regional" />
-
-        <TextView
-            style="@style/viewParent.headerText.settingsTextIcon"
-            android:drawableStart="@drawable/ic_languages"
-            android:text="Language" />
-
-        <TextView
-            style="@style/viewParent.headerText.settingsTextIcon"
-            android:drawableStart="@drawable/ic_logout"
-            android:text="Logout" />
+            <TextView
+                style="@style/viewParent.headerText"
+                android:text="Settings" />
 
 
-        <TextView
-            android:id="@+id/tv_app_version"
-            style="@style/viewParent.headerText.settingsMiniTitle"
-            tools:text="App ver 1.0"
-            android:textAlignment="center" />
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/darkModeSwitch"
+                style="@style/settingsText"
+                android:drawableStart="@drawable/ic_dark_mode"
+                android:text="Dark Mode" />
 
-    </LinearLayout>
-</ScrollView>
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/biometric_switch"
+                style="@style/settingsText"
+                android:drawableStart="@drawable/ic_baseline_fingerprint_24"
+                android:text="Biometric Sensor Default" />
+
+            <TextView
+                style="@style/viewParent.headerText.settingsMiniTitle"
+                android:text="Profile" />
+
+            <TextView
+                style="@style/viewParent.headerText.settingsTextIcon"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_edit_password"
+                android:text="Change Pin" />
+
+            <TextView
+                style="@style/viewParent.headerText.settingsMiniTitle"
+                android:text="Notifications" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                style="@style/settingsText"
+                android:drawableStart="@drawable/ic_notifications"
+                android:text="Notifications" />
+
+            <TextView
+                style="@style/viewParent.headerText.settingsMiniTitle"
+                android:text="Regional" />
+
+            <TextView
+                style="@style/viewParent.headerText.settingsTextIcon"
+                android:drawableStart="@drawable/ic_languages"
+                android:text="Language" />
+
+            <TextView
+                style="@style/viewParent.headerText.settingsTextIcon"
+                android:drawableStart="@drawable/ic_logout"
+                android:text="Logout" />
+
+
+            <TextView
+                android:id="@+id/tv_app_version"
+                style="@style/viewParent.headerText.settingsMiniTitle"
+                android:textAlignment="center"
+                tools:text="App ver 1.0" />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

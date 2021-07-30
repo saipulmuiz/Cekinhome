@@ -1,4 +1,4 @@
-package com.cektrend.cekinhome
+package com.cektrend.cekinhome.features.main
 
 import android.content.Intent
 import android.content.res.Configuration
@@ -11,8 +11,14 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.cektrend.cekinhome.*
+import com.cektrend.cekinhome.core.util.OnDayNightStateChanged
 import com.cektrend.cekinhome.databinding.ActivityMainBinding
 import com.cektrend.cekinhome.core.util.showToast
+import com.cektrend.cekinhome.features.DashboardFragment
+import com.cektrend.cekinhome.features.history.HistoryActivity
+import com.cektrend.cekinhome.features.settings.SettingsFragment
+import com.cektrend.cekinhome.features.settings.SettingsPrefManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 /**

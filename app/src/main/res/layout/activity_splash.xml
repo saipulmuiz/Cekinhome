@@ -1,61 +1,64 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/splash_activity"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/blue_primary"
-    tools:context=".SplashActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/splashImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        android:src="@drawable/logo_trans" />
-
-    <TextView
-        android:id="@+id/appName"
+    <RelativeLayout
+        android:id="@+id/splash_activity"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/splashImage"
-        android:layout_marginTop="5dp"
-        android:gravity="center_horizontal"
-        android:text="@string/app_name"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:background="@color/blue_primary"
+        tools:context=".features.SplashActivity">
 
-    <TextView
-        android:id="@+id/tv_subtitle_splash"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/appName"
-        android:layout_marginTop="5dp"
-        android:gravity="center_horizontal"
-        android:text="@string/subtitle_splash"
-        android:textColor="@color/white"
-        android:textSize="22sp" />
+        <ImageView
+            android:id="@+id/splashImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:src="@drawable/logo_trans" />
 
-    <TextView
-        android:id="@+id/nameDev"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/versiText"
-        android:layout_marginTop="5dp"
-        android:gravity="center_horizontal"
-        android:text="@string/app_developer"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/appName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/splashImage"
+            android:layout_marginTop="5dp"
+            android:gravity="center_horizontal"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/versiText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:gravity="center_horizontal"
-        android:textColor="@color/white"
-        android:textSize="16sp" />
-</RelativeLayout>
+        <TextView
+            android:id="@+id/tv_subtitle_splash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/appName"
+            android:layout_marginTop="5dp"
+            android:gravity="center_horizontal"
+            android:text="@string/subtitle_splash"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/nameDev"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/versiText"
+            android:layout_marginTop="5dp"
+            android:gravity="center_horizontal"
+            android:text="@string/app_developer"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/versiText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </RelativeLayout>
+</layout>

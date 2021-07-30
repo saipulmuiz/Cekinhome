@@ -1,4 +1,4 @@
-package com.cektrend.cekinhome
+package com.cektrend.cekinhome.features.pin
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,13 +7,18 @@ import android.os.Looper
 import android.text.Editable
 import android.view.View
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
-import com.cektrend.cekinhome.databinding.ActivityPinBinding
+import com.cektrend.cekinhome.BuildConfig
+import com.cektrend.cekinhome.R
+import com.cektrend.cekinhome.core.base.BaseActivity
 import com.cektrend.cekinhome.core.util.hide
 import com.cektrend.cekinhome.core.util.show
+import com.cektrend.cekinhome.features.settings.SettingsPrefManager
+import com.cektrend.cekinhome.databinding.ActivityPinBinding
 import com.cektrend.cekinhome.core.util.showToast
+import com.cektrend.cekinhome.features.main.MainActivity
+
 /**
  * Created by Saipul Muiz on 7/30/2021.
  * Cekinhome | Made with love
@@ -21,15 +26,14 @@ import com.cektrend.cekinhome.core.util.showToast
  * For question and project collaboration contact me to saipulmuiz87@gmail.com
  */
 
-class PinActivity : AppCompatActivity(), View.OnClickListener {
-    private lateinit var binding: ActivityPinBinding
+class PinActivity : BaseActivity<ActivityPinBinding, PinViewModel>(), View.OnClickListener {
+
+    override fun getViewModelBindingVariable(): Int = NO_VIEW_MODEL_BINDING_VARIABLE
+    override fun getLayoutId(): Int = R.layout.activity_pin
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPinBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-        binding.pinActivity.setBackgroundColor(ContextCompat.getColor(this, R.color.activity_bg))
+        getDataBinding().pinActivity.setBackgroundColor(ContextCompat.getColor(this, R.color.activity_bg))
         initiViews()
         initBiometric()
     }
@@ -67,29 +71,31 @@ class PinActivity : AppCompatActivity(), View.OnClickListener {
         if (SettingsPrefManager(this).isBiometricDefault) {
             biometricPrompt.authenticate(promptInfo)
         }
-        binding.t9KeyFingerprint.setOnClickListener { biometricPrompt.authenticate(promptInfo) }
+        getDataBinding().t9KeyFingerprint.setOnClickListener { biometricPrompt.authenticate(promptInfo) }
     }
 
     private fun initiViews() {
-        binding.tvVersion.text = BuildConfig.VERSION_NAME
-        binding.t9Key0.setOnClickListener(this)
-        binding.t9Key1.setOnClickListener(this)
-        binding.t9Key2.setOnClickListener(this)
-        binding.t9Key3.setOnClickListener(this)
-        binding.t9Key4.setOnClickListener(this)
-        binding.t9Key5.setOnClickListener(this)
-        binding.t9Key6.setOnClickListener(this)
-        binding.t9Key7.setOnClickListener(this)
-        binding.t9Key8.setOnClickListener(this)
-        binding.t9Key9.setOnClickListener(this)
-        binding.t9KeyBackspace.setOnClickListener(this)
+        getDataBinding().apply {
+            tvVersion.text = BuildConfig.VERSION_NAME
+            t9Key0.setOnClickListener(this@PinActivity)
+            t9Key1.setOnClickListener(this@PinActivity)
+            t9Key2.setOnClickListener(this@PinActivity)
+            t9Key3.setOnClickListener(this@PinActivity)
+            t9Key4.setOnClickListener(this@PinActivity)
+            t9Key5.setOnClickListener(this@PinActivity)
+            t9Key6.setOnClickListener(this@PinActivity)
+            t9Key7.setOnClickListener(this@PinActivity)
+            t9Key8.setOnClickListener(this@PinActivity)
+            t9Key9.setOnClickListener(this@PinActivity)
+            t9KeyBackspace.setOnClickListener(this@PinActivity)
+        }
     }
 
     override fun onClick(v: View) {
-        val editable: Editable = binding.etPinField.text
+        val editable: Editable = getDataBinding().etPinField.text
         val charCount = editable.length
         if (v.tag != null && "number_button" == v.tag) {
-            binding.etPinField.append((v as TextView).text)
+            getDataBinding().etPinField.append((v as TextView).text)
             if (charCount >= 5) {
                 if (editable.toString() == "020198") {
                     authPin(true)
@@ -107,16 +113,16 @@ class PinActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun authPin(state: Boolean) {
-        binding.progressBar.show()
+        getDataBinding().progressBar.show()
         Handler(Looper.getMainLooper()).postDelayed({
             if (state) {
                 val intent = Intent(this, MainActivity::class.java).apply {
                     putExtra("EXTRA_MESSAGE", "test")
                 }
                 startActivity(intent)
-                binding.progressBar.hide()
+                getDataBinding().progressBar.hide()
             } else {
-                binding.progressBar.hide()
+                getDataBinding().progressBar.hide()
                 this.showToast("Pin salah, silahkan cobalagi..!")
             }
         }, 2000)

@@ -1,4 +1,4 @@
-package com.cektrend.cekinhome
+package com.cektrend.cekinhome.features.history
 
 import android.content.Context
 import android.graphics.Color
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.cektrend.cekinhome.R
 import com.cektrend.cekinhome.data.db.entity.HistoryLog
 /**
  * Created by Saipul Muiz on 7/30/2021.

@@ -1,4 +1,4 @@
-package com.cektrend.cekinhome
+package com.cektrend.cekinhome.features
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,8 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.cektrend.cekinhome.databinding.FragmentDashboardBinding
+import com.cektrend.cekinhome.features.aquarium.AquariumFragment
+import com.cektrend.cekinhome.features.bedroom.BedroomFragment
 import java.util.*
 /**
  * Created by Saipul Muiz on 7/30/2021.
