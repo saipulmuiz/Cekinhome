@@ -1,11 +1,10 @@
 package com.cektrend.cekinhome
 
+import android.content.Intent
 import android.content.res.Configuration
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
@@ -13,26 +12,30 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.cektrend.cekinhome.databinding.ActivityMainBinding
-import com.cektrend.cekinhome.utils.showToast
+import com.cektrend.cekinhome.core.util.showToast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
-
+/**
+ * Created by Saipul Muiz on 7/30/2021.
+ * Cekinhome | Made with love
+ * Check our website -> Cektrend Studio | https://cektrend.com for more information
+ * For question and project collaboration contact me to saipulmuiz87@gmail.com
+ */
 class MainActivity : AppCompatActivity() {
     private var doubleBack = false
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        if (DarkModePrefManager(this).isNightMode) {
+        if (SettingsPrefManager(this).isNightMode) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
         binding.mainActivity.setBackgroundColor(ContextCompat.getColor(this, R.color.activity_bg))
         binding.customBottomBar.inflateMenu(R.menu.bottom_menu)
         setUpNavigation()
-        binding.fabInfo.setOnClickListener { this.showToast("fab button di click!") }
+        binding.fabInfo.setOnClickListener { startActivity(Intent(this, HistoryActivity::class.java)) }
     }
 
     private fun setUpNavigation() {
@@ -126,13 +129,5 @@ class MainActivity : AppCompatActivity() {
             binding.customBottomBar.itemIconTintList = ContextCompat.getColorStateList(this, R.color.white)
             binding.customBottomBar.itemTextColor = ContextCompat.getColorStateList(this, R.color.white)
         }
-
-        // supportFragmentManager.fragments.forEach {
-        //     if(it is OnDayNightStateChanged){
-        //         it.onDayNightApplied(state)
-        //     }
-        // }
-        // recreate()
-
     }
 }

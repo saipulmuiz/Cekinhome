@@ -9,10 +9,13 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.cektrend.cekinhome.databinding.FragmentDashboardBinding
-import com.google.android.material.tabs.TabLayout
-import com.cektrend.cekinhome.utils.showToast
 import java.util.*
-
+/**
+ * Created by Saipul Muiz on 7/30/2021.
+ * Cekinhome | Made with love
+ * Check our website -> Cektrend Studio | https://cektrend.com for more information
+ * For question and project collaboration contact me to saipulmuiz87@gmail.com
+ */
 class DashboardFragment : Fragment() {
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!

@@ -9,9 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Cekinhome">
+        <activity android:name=".HistoryActivity"></activity>
         <activity
             android:name=".SplashActivity"
-            android:noHistory="true">
+            android:noHistory="true"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,12 +22,10 @@
         </activity>
         <activity
             android:name=".PinActivity"
-            android:noHistory="true">
-
-        </activity>
+            android:noHistory="true"></activity>
         <activity
             android:name=".MainActivity"
-            android:configChanges="uiMode"></activity>
+            android:configChanges="uiMode" />
     </application>
 
 </manifest>

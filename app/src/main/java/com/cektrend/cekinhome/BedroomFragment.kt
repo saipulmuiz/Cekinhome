@@ -9,7 +9,12 @@ import android.view.ViewGroup
 import com.cektrend.cekinhome.data.Device
 import com.cektrend.cekinhome.databinding.FragmentBedroomBinding
 import com.google.firebase.database.*
-
+/**
+ * Created by Saipul Muiz on 7/30/2021.
+ * Cekinhome | Made with love
+ * Check our website -> Cektrend Studio | https://cektrend.com for more information
+ * For question and project collaboration contact me to saipulmuiz87@gmail.com
+ */
 class BedroomFragment : Fragment() {
     private lateinit var dbCekinhome: DatabaseReference
     private var _binding: FragmentBedroomBinding? = null

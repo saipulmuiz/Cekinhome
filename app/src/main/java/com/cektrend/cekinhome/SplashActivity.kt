@@ -12,10 +12,19 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import com.cektrend.cekinhome.databinding.ActivitySplashBinding
 
+/**
+ * Created by Saipul Muiz on 7/30/2021.
+ * Cekinhome | Made with love
+ * Check our website -> Cektrend Studio | https://cektrend.com for more information
+ * For question and project collaboration contact me to saipulmuiz87@gmail.com
+ */
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding
     override fun onCreate(savedInstanceState: Bundle?) {
+        if (SettingsPrefManager(this).isNightMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         val view = binding.root

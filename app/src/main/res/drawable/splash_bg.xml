@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item android:drawable="@color/blue_primary" />
+
+    <item
+        android:width="150dp"
+        android:height="150dp"
+        android:gravity="center"
+        tools:targetApi="m">
+        <bitmap
+            android:gravity="fill_horizontal|fill_vertical"
+            android:src="@drawable/logo_trans"
+            tools:ignore="ResourceCycle" />
+    </item>
+
+</layer-list>

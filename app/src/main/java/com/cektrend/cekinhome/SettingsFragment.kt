@@ -6,13 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.app.ActivityCompat.recreate
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.cektrend.cekinhome.databinding.FragmentSettingsBinding
-import com.cektrend.cekinhome.utils.showToast
-
-class SettingsFragment : Fragment(), OnDayNightStateChanged {
+/**
+ * Created by Saipul Muiz on 7/30/2021.
+ * Cekinhome | Made with love
+ * Check our website -> Cektrend Studio | https://cektrend.com for more information
+ * For question and project collaboration contact me to saipulmuiz87@gmail.com
+ */
+class SettingsFragment : Fragment(), OnDayNightStateChanged, CompoundButton.OnCheckedChangeListener {
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
 
@@ -32,25 +34,35 @@ class SettingsFragment : Fragment(), OnDayNightStateChanged {
     }
 
     private fun setDarkModeSwitch() {
-        val darkModePrefManager = DarkModePrefManager(requireContext())
-        binding.darkModeSwitch.isChecked = DarkModePrefManager(requireContext()).isNightMode
-        binding.darkModeSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-                darkModePrefManager.setDarkMode(true)
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            } else {
-                darkModePrefManager.setDarkMode(false)
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-            }
-            // val darkModePrefManager = DarkModePrefManager(requireContext())
-            // darkModePrefManager.setDarkMode(!darkModePrefManager.isNightMode)
-            // activity?.showToast("Silahkan mulai ulang!")
-            // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            // recreate()
-        }
+        binding.darkModeSwitch.isChecked = SettingsPrefManager(requireContext()).isNightMode
+        binding.biometricSwitch.isChecked = SettingsPrefManager(requireContext()).isBiometricDefault
+        binding.darkModeSwitch.setOnCheckedChangeListener(this)
+        binding.biometricSwitch.setOnCheckedChangeListener(this)
     }
 
     override fun onDayNightApplied(state: Int) {
         binding.darkModeSwitch.isChecked = state != OnDayNightStateChanged.DAY
+    }
+
+    override fun onCheckedChanged(compoundButton: CompoundButton, isChecked: Boolean) {
+        val settingsPrefManager = SettingsPrefManager(requireContext())
+        when (compoundButton.id) {
+            R.id.darkModeSwitch -> {
+                if (isChecked) {
+                    settingsPrefManager.setDarkMode(true)
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                } else {
+                    settingsPrefManager.setDarkMode(false)
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                }
+            }
+            R.id.biometric_switch -> {
+                if (isChecked) {
+                    settingsPrefManager.setBiometricDefault(true)
+                } else {
+                    settingsPrefManager.setBiometricDefault(false)
+                }
+            }
+        }
     }
 }

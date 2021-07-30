@@ -24,6 +24,12 @@
             android:drawableStart="@drawable/ic_dark_mode"
             android:text="Dark Mode" />
 
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/biometric_switch"
+            style="@style/settingsText"
+            android:drawableStart="@drawable/ic_baseline_fingerprint_24"
+            android:text="Biometric Sensor Default" />
+
         <TextView
             style="@style/viewParent.headerText.settingsMiniTitle"
             android:text="Profile" />
@@ -32,7 +38,7 @@
             style="@style/viewParent.headerText.settingsTextIcon"
             android:layout_marginTop="10dp"
             android:drawableStart="@drawable/ic_edit_password"
-            android:text="Change Password" />
+            android:text="Change Pin" />
 
         <TextView
             style="@style/viewParent.headerText.settingsMiniTitle"

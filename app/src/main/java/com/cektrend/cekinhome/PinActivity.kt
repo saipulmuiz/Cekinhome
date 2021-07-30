@@ -1,33 +1,30 @@
 package com.cektrend.cekinhome
 
-import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.text.Editable
 import android.view.View
-import android.view.animation.DecelerateInterpolator
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentActivity
 import com.cektrend.cekinhome.databinding.ActivityPinBinding
-import com.cektrend.cekinhome.utils.hide
-import com.cektrend.cekinhome.utils.show
-import com.cektrend.cekinhome.utils.showToast
-import java.util.concurrent.Executors
-
+import com.cektrend.cekinhome.core.util.hide
+import com.cektrend.cekinhome.core.util.show
+import com.cektrend.cekinhome.core.util.showToast
+/**
+ * Created by Saipul Muiz on 7/30/2021.
+ * Cekinhome | Made with love
+ * Check our website -> Cektrend Studio | https://cektrend.com for more information
+ * For question and project collaboration contact me to saipulmuiz87@gmail.com
+ */
 
 class PinActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityPinBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        if (DarkModePrefManager(this).isNightMode) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        }
         super.onCreate(savedInstanceState)
         binding = ActivityPinBinding.inflate(layoutInflater)
         val view = binding.root
@@ -67,7 +64,9 @@ class PinActivity : AppCompatActivity(), View.OnClickListener {
             .setSubtitle("Gunakan biometrik yang terdaftar.")
             .setNegativeButtonText("Gunakan Pin")
             .build()
-        biometricPrompt.authenticate(promptInfo)
+        if (SettingsPrefManager(this).isBiometricDefault) {
+            biometricPrompt.authenticate(promptInfo)
+        }
         binding.t9KeyFingerprint.setOnClickListener { biometricPrompt.authenticate(promptInfo) }
     }
 

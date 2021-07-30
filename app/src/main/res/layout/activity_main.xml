@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/orange"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_baseline_info_24"
+        android:src="@drawable/ic_baseline_history_24"
         app:layout_anchor="@id/bottomAppBar"
         app:tint="@color/white" />
 
