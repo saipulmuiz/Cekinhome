@@ -11,6 +11,9 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.cektrend.cekinhome.R
 import com.cektrend.cekinhome.data.db.entity.HistoryLog
+import java.text.SimpleDateFormat
+import java.util.*
+
 /**
  * Created by Saipul Muiz on 7/30/2021.
  * Cekinhome | Made with love
@@ -19,7 +22,6 @@ import com.cektrend.cekinhome.data.db.entity.HistoryLog
  */
 class HistoryTableAdapter(context: Context, data: ArrayList<HistoryLog>) : ArrayAdapter<HistoryLog>(context, -1, data) {
     private val mContext: Context = context
-    private val dataSet: ArrayList<HistoryLog> = data
     private val headerColor = Color.parseColor("#0062cc")
 
     class ViewHolder(row: View?) {
@@ -39,7 +41,11 @@ class HistoryTableAdapter(context: Context, data: ArrayList<HistoryLog>) : Array
     }
 
     override fun getViewTypeCount(): Int {
-        return super.getCount()
+        if (count > 0) {
+            return count
+        } else {
+            return super.getViewTypeCount()
+        }
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -48,7 +54,7 @@ class HistoryTableAdapter(context: Context, data: ArrayList<HistoryLog>) : Array
 
     private var lastPosition = -1
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val model: HistoryLog? = getItem(position)
+        // val model: HistoryLog? = getItem(position)
         val viewHolder: ViewHolder
         val view: View
 
@@ -68,34 +74,24 @@ class HistoryTableAdapter(context: Context, data: ArrayList<HistoryLog>) : Array
 
         lastPosition = position
 
-        if (model?.id != null) {
-            viewHolder.tvNo?.text = model.id.toString()
-            viewHolder.tvDeviceName?.text = model.deviceName.toString()
-            viewHolder.tvKondisi?.text = model.conditionState.toString()
-            viewHolder.tvDate?.text = model.dateInfo.toString()
-            viewHolder.layout?.setBackgroundColor(headerColor)
-            viewHolder.tvNo?.setTypeface(null, Typeface.BOLD)
-            viewHolder.tvDeviceName?.setTypeface(null, Typeface.BOLD)
-            viewHolder.tvKondisi?.setTypeface(null, Typeface.BOLD)
-            viewHolder.tvDate?.setTypeface(null, Typeface.BOLD)
-            viewHolder.tvNo?.setTextColor(Color.WHITE)
-            viewHolder.tvDeviceName?.setTextColor(Color.WHITE)
-            viewHolder.tvKondisi?.setTextColor(Color.WHITE)
-            viewHolder.tvDate?.setTextColor(Color.WHITE)
-        } else {
-            viewHolder.tvNo?.text = model?.id.toString()
-            viewHolder.tvDeviceName?.text = model?.deviceName
-            viewHolder.tvKondisi?.text = model?.conditionState
-            viewHolder.tvDate?.text = model?.dateInfo.toString()
-            viewHolder.layout?.setBackgroundColor(Color.WHITE)
-            viewHolder.tvNo?.setTypeface(null, Typeface.NORMAL)
-            viewHolder.tvDeviceName?.setTypeface(null, Typeface.NORMAL)
-            viewHolder.tvKondisi?.setTypeface(null, Typeface.NORMAL)
-            viewHolder.tvDate?.setTypeface(null, Typeface.NORMAL)
-            viewHolder.tvNo?.setTextColor(Color.BLACK)
-            viewHolder.tvDeviceName?.setTextColor(Color.BLACK)
-            viewHolder.tvKondisi?.setTextColor(Color.BLACK)
-            viewHolder.tvDate?.setTextColor(Color.BLACK)
+        viewHolder.apply {
+            if (position == 0) {
+                tvNo?.text = StringBuilder("No.")
+                tvDeviceName?.text = StringBuilder("Nama Device")
+                tvKondisi?.text = StringBuilder("Kondisi")
+                tvDate?.text = StringBuilder("Tanggal")
+                tvNo?.setTypeface(null, Typeface.BOLD)
+                tvDeviceName?.setTypeface(null, Typeface.BOLD)
+                tvKondisi?.setTypeface(null, Typeface.BOLD)
+                tvDate?.setTypeface(null, Typeface.BOLD)
+            } else {
+                val model: HistoryLog? = getItem(position - 1)
+                val date: String = SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(model?.dateInfo)
+                tvNo?.text = position.toString()
+                tvDeviceName?.text = model?.deviceName
+                tvKondisi?.text = model?.conditionState
+                tvDate?.text = date
+            }
         }
         return view
     }

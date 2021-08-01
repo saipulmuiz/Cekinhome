@@ -18,7 +18,7 @@ import androidx.lifecycle.ViewModel
  */
 abstract class BaseFragment<T : ViewDataBinding, V : ViewModel> : Fragment() {
 
-    private val NO_VIEW_MODEL_BINDING_VARIABLE = -1
+    val NO_VIEW_MODEL_BINDING_VARIABLE = -1
 
     lateinit var mViewModel: V
     lateinit var mViewDataBinding: T

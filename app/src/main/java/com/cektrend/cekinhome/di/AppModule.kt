@@ -19,19 +19,6 @@ import io.reactivex.disposables.CompositeDisposable
 @InstallIn(SingletonComponent::class)
 @Module
 class AppModule{
-
-//    lateinit var context: Context
-//
-//    constructor(_context: Context) {
-//        context = _context
-//    }
-//
-//    @Provides
-//    internal fun provideAppContext() : Context = context
-//
-//    @Provides
-//    internal fun provideApplication() : Application = context.applicationContext as Application
-
     @Provides
     @DbName
     fun provideDbName() = "cekinhome.db"

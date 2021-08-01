@@ -1,6 +1,5 @@
 package com.cektrend.cekinhome.features.history
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -22,10 +21,6 @@ class HistoryViewModel @Inject constructor(private val historyLogRepository: His
     private var mTriggerFetchData = MutableLiveData<Boolean>()
     private var historyLog : LiveData<List<HistoryLog>> = Transformations.switchMap(mTriggerFetchData){
         historyLogRepository.getAllData()
-    }
-
-    fun insertHistoryLog(historyLog: HistoryLog){
-        historyLogRepository.insertData(historyLog)
     }
 
     fun getHistoryLogs(): LiveData<List<HistoryLog>> {

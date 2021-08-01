@@ -22,13 +22,26 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <ListView
-            android:id="@+id/list_history"
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:paddingBottom="24dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:listitem="@layout/layout_history_table" />
+            android:layout_marginTop="?attr/actionBarSize">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:baselineAligned="false">
+
+                <ListView
+                    android:id="@+id/list_history"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clipToPadding="false"
+                    android:paddingBottom="24dp"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    tools:listitem="@layout/layout_history_table" />
+            </LinearLayout>
+        </HorizontalScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

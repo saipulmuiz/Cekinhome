@@ -25,12 +25,11 @@ class DashboardFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         setupViewPager(binding.tabRoomViewpager)
         binding.tabRoom.setupWithViewPager(binding.tabRoomViewpager)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     private fun setupViewPager(viewPager: ViewPager) {
@@ -56,7 +55,7 @@ class DashboardFragment : Fragment() {
             mFragmentTitleList.add(title)
         }
 
-        override fun getPageTitle(position: Int): CharSequence? {
+        override fun getPageTitle(position: Int): CharSequence {
             return mFragmentTitleList[position]
         }
     }

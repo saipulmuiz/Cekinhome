@@ -7,5 +7,5 @@ package com.cektrend.cekinhome.data.entity
  */
 data class Device(
     val aquarium: Aquarium? = null,
-    val kitchen: Kitchen? = null
+    val kitchen: Bedroom? = null
 )

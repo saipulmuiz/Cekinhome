@@ -1,6 +1,7 @@
 package com.cektrend.cekinhome.features.aquarium
 
 import com.cektrend.cekinhome.core.base.BaseViewModel
+import com.cektrend.cekinhome.data.db.entity.HistoryLog
 import com.cektrend.cekinhome.data.db.repository.HistoryLogRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -13,4 +14,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class AquariumViewModel @Inject constructor(private val historyLogRepository: HistoryLogRepository) : BaseViewModel() {
+    fun insertHistoryLog(historyLog: HistoryLog) {
+        historyLogRepository.insertData(historyLog)
+    }
 }

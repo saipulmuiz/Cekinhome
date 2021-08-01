@@ -21,12 +21,15 @@ import com.cektrend.cekinhome.features.settings.SettingsFragment
 import com.cektrend.cekinhome.features.settings.SettingsPrefManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
+import dagger.hilt.android.AndroidEntryPoint
+
 /**
  * Created by Saipul Muiz on 7/30/2021.
  * Cekinhome | Made with love
  * Check our website -> Cektrend Studio | https://cektrend.com for more information
  * For question and project collaboration contact me to saipulmuiz87@gmail.com
  */
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private var doubleBack = false
     private lateinit var binding: ActivityMainBinding
