@@ -6,9 +6,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/saipulmuiz/Cekinhome">
-    <img src="https://raw.githubusercontent.com/saipulmuiz/Cekinhome/master/Cekinhome%20UI/Logo/logo-horizontal.jpg" width='250dp' alt="Logo Cekinhome" >
-  </a>
-
+    <img src="https://raw.githubusercontent.com/saipulmuiz/Cekinhome/master/Cekinhome%20UI/Logo/logo-horizontal.jpg" width='450dp' alt="Logo Cekinhome" >  </a>
   <h3 align="center">Cekinhome App </h3>
 
   <p align="center">
@@ -99,15 +97,15 @@ Cekinhome is an application that helps you to monitor your home remotely.
         alt="Biometric Mode"    
         style="margin-right: 10px;"    
         width="150" />
-    <img src="https://raw.githubusercontent.com/saipulmuiz/Cekinhome/master/Cekinhome%20UI/SS/splash.png"
+    <img src="https://raw.githubusercontent.com/saipulmuiz/Cekinhome/master/Cekinhome%20UI/SS/pin.png"
         alt="Pin Mode"    
         style="margin-right: 10px;"    
         width="150" />
-    <img src="https://raw.githubusercontent.com/saipulmuiz/Cekinhome/master/Cekinhome%20UI/SS/splash.png"
+    <img src="https://raw.githubusercontent.com/saipulmuiz/Cekinhome/master/Cekinhome%20UI/SS/main.png"
         alt="Main Page"    
         style="margin-right: 10px;"    
         width="150" />
-    <img src="https://raw.githubusercontent.com/saipulmuiz/Cekinhome/master/Cekinhome%20UI/SS/splash.png"
+    <img src="https://raw.githubusercontent.com/saipulmuiz/Cekinhome/master/Cekinhome%20UI/SS/setting.png"
         alt="Settings Page"    
         style="margin-right: 10px;"    
         width="150" />
